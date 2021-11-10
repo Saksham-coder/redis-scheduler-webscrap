@@ -1,0 +1,37 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  font-family: "Poppins", sans-serif;
+  scroll-behavior: smooth;
+}
+
+.app_page {
+  display: flex;
+}
+
+.search-filter {
+  width: 100%;
+  font-family: "Poppins", sans-serif;
+  margin-top: -80px;
+  position: relative;
+  margin-bottom: 50px;
+}
+
+#root {
+  background-color: #f5f5f5;
+  overflow: hidden;
+}
+
+::-webkit-input-placeholder {
+  /* Edge */
+  font-family: "Poppins", sans-serif;
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  font-family: "Poppins", sans-serif;
+}
+
+::placeholder {
+  font-family: "Poppins", sans-serif;
+}

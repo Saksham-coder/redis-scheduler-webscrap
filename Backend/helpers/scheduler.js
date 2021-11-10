@@ -17,7 +17,6 @@ const scheduler = schedule.scheduleJob("* * * * * *", async () => {
       try {
         const lastIndex = reply[0];
         const latestData = await Webscrap.findById(JSON.parse(lastIndex));
-        console.log("LATEST DATA", latestData);
         const documnet = latestData;
         if (documnet && documnet.halted <= 2) {
           // EXECUTE FUNCTION ANY ASYNC FUNCTION
@@ -25,7 +24,6 @@ const scheduler = schedule.scheduleJob("* * * * * *", async () => {
           // IF THERE IS TCP ERROR THEN IT WILL ADD TO QUEUE AND ON EXCEDDING TWICE IT WILL NOT ADD IN QUEUE
           tcpPortUsed.check(9000, "127.0.0.1").then(
             async function (inUse) {
-              console.log("ENTERED TCP");
               if (inUse && latestData.url) {
                 // CHANGING STATUS TO RUNNING
                 const updateDocumentToRunning = await Webscrap.findByIdAndUpdate(
@@ -38,8 +36,8 @@ const scheduler = schedule.scheduleJob("* * * * * *", async () => {
                 );
                 // REMOVING IT FROM SORTED LIST REDIS
                 client.zrem("data", lastIndex, async function (err, reply) {
-                  console.log("ERR", err);
-                  console.log("reply", reply);
+                  if (err) {logger.warn(`${err} at ${Date.now()}`)}
+                  if (reply) {logger.info(`${reply} at ${Date.now()}`)}
                 });
                 // CREATING CONNECTION
                 const tcpclient = net.createConnection(options, () => {
@@ -102,7 +100,7 @@ const scheduler = schedule.scheduleJob("* * * * * *", async () => {
               // JSON.stringify(newDocument),
               async function (err, reply) {
                 if (err) {logger.info(`Error when data is added to queue of ID ${updatedToHalt._id} at ${Date.now()}`)}
-              if (reply) {logger.info(`Data is added to queue of ID ${updatedToHalt._id} at ${Date.now()}`)}
+                if (reply) {logger.info(`Data is added to queue of ID ${updatedToHalt._id} at ${Date.now()}`)}
                 if (reply) {
                   const updatedDocument = await Webscrap.findByIdAndUpdate(
                     updatedToHalt._id,

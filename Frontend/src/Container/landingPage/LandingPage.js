@@ -18,12 +18,6 @@ const LandingPage = (props) => {
 
   const headers = [
     {
-      name: "DATE",
-      selector: "date",
-      sortable: true,
-      // right: true,
-    },
-    {
       name: "URL",
       selector: "url",
       sortable: true,
@@ -32,6 +26,12 @@ const LandingPage = (props) => {
     {
       name: "Title",
       selector: "title",
+      sortable: true,
+      // right: true,
+    },
+    {
+      name: "DATE",
+      selector: "date",
       sortable: true,
       // right: true,
     },

@@ -19,7 +19,6 @@ const PopUp = (props) => {
     event.preventDefault()
     event.stopPropagation();
     const form = event.currentTarget;
-    console.log(form.checkValidity() )
     if (form.checkValidity() === false) {
       setValidated(true);
     } else {
@@ -28,6 +27,9 @@ const PopUp = (props) => {
         title,
         priority
       })
+      setUrl("")
+      setTitle("")
+      setPriority("")
       handleClose()
     }
   };

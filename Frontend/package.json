@@ -73,7 +73,7 @@
     "styled-components": "^5.2.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "set PORT=3001 && react-scripts start",
     "build": "react-scripts build",
     "build:prodcopy": "REACT_APP_ENV=prodcopy npm run build",
     "build:production": "REACT_APP_ENV=production npm run build",

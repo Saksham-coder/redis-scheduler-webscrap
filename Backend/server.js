@@ -3,8 +3,8 @@ const logger = require('./helpers/loggers')
 
 const app = require('./app')
 
-// const DB = "mongodb+srv://saksham:ZFaciHpNZnOunW7R@cluster0.iusod.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
-const DB = "mongodb://localhost:27017/saksham"
+const DB = "mongodb+srv://saksham:ZFaciHpNZnOunW7R@cluster0.iusod.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+// const DB = "mongodb://localhost:27017/saksham"
 
 mongoose
 	.connect(DB, {
